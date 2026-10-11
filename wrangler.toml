@@ -1,3 +1,17 @@
-name = "sveltia-cms-auth"
+name = "avanian-net-cms-auth"
 main = "src/index.js"
 compatibility_date = "2023-03-24"
+
+# Sign-in for the CMS at avanian.net/admin/, served only on its own domain.
+# The GitHub App's callback URL is https://cms-auth.avanian.net/callback.
+workers_dev = false
+preview_urls = false
+routes = [
+  { pattern = "cms-auth.avanian.net", custom_domain = true },
+]
+
+# GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET are Worker secrets, set in the
+# Cloudflare dashboard; a deploy keeps them. Plain variables set there would
+# be replaced on each deploy, so this one is kept here.
+[vars]
+ALLOWED_DOMAINS = "avanian.net"
